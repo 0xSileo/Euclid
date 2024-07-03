@@ -76,18 +76,18 @@ extension ContentView {
             // Prepare inputs
             var inputs = [String: [String]]()
             let a = 3
-            let b = 5
+            let b = 11
             let c = a*b
             inputs["a"] = [String(a)]
             inputs["b"] = [String(b)]
             
             // Expected outputs
-            let outputs: [String] = [String(c), String(a)]
+            let outputs: [String] = [String(c)]
             let expectedOutput: [UInt8] = serializeOutputs(outputs)
             
             let start = CFAbsoluteTimeGetCurrent()
             
-            let zkeyPath = Bundle.main.path(forResource: "multiplier3_final", ofType: "zkey")!
+            let zkeyPath = Bundle.main.path(forResource: "multiplier_0001", ofType: "zkey")!
             // Generate Proof
             let generateProofResult = try generateCircomProof(zkeyPath: zkeyPath, circuitInputs: inputs)
             assert(!generateProofResult.proof.isEmpty, "Proof should not be empty")
@@ -119,7 +119,7 @@ extension ContentView {
         do {
             let start = CFAbsoluteTimeGetCurrent()
             
-            let zkeyPath = Bundle.main.path(forResource: "multiplier3_final", ofType: "zkey")!
+            let zkeyPath = Bundle.main.path(forResource: "multiplier_0001", ofType: "zkey")!
             let isValid = try verifyCircomProof(zkeyPath: zkeyPath, proof: proof, publicInput: inputs)
             let end = CFAbsoluteTimeGetCurrent()
             let timeTaken = end - start

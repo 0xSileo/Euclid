@@ -33,7 +33,7 @@ fun MultiplierComponent(zkeyPath: String) {
 
     val inputs = mutableMapOf<String, List<String>>()
     inputs["a"] = listOf("3")
-    inputs["b"] = listOf("5")
+    inputs["b"] = listOf("11")
 
     Box(modifier = Modifier.fillMaxSize().padding(16.dp), contentAlignment = Alignment.Center) {
         Button(

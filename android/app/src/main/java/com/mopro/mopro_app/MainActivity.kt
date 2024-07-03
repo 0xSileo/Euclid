@@ -35,8 +35,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             MoproappTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    val s = assets.open("multiplier3_final.zkey")
-                    val f = File(filesDir, "multiplier3_final.zkey")
+                    val s = assets.open("multiplier_0001.zkey")
+                    val f = File(filesDir, "multiplier_0001.zkey")
                     copyFile(s, f.outputStream())
                     Column(modifier = Modifier.fillMaxSize().padding(paddingValues = innerPadding)) {
                         MultiplierComponent(f.absolutePath)
