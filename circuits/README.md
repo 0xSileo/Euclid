@@ -25,7 +25,7 @@ npx snarkjs groth16 verify verification_key.json public.json proof.json
 circom multiplier.circom --r1cs --wasm
 
 # Copy WebAssembly file
-cp multiplier_js/multiplier.wasm ../
+cp multiplier_js/multiplier.wasm .
 
 # Copy .zkey file
 cp multiplier_0001.zkey ../../android/app/src/main/assets/
