@@ -17,7 +17,19 @@ A Circom circuit is written and, depending on its inputs, will generate the nece
 
 ## Compiling the apps
 
-Clone this repo then run either `cargo run --bin ios` or `cargo run --bin android`. This command will build either an `xcframework` or a `jniLibs` folder containing libraries for the device and simulator. After this you can build in xcode/android studio without needing to run a cargo command again. Open the contents of `ios` or `android` to build the apps.
+After cloning the repository, go to the circuit's directory (e.g `cd circuits/multiplier`) and compile the circuit using
+
+```bash 
+circom multiplier.circom --r1cs --wasm
+```
+
+then, copy the generated WebAssembly file to the circuit directory using 
+
+```bash
+cp multiplier_js/multiplier.wasm ./circuit.wasm
+```
+
+Note that if you want to run your own trusted setup ceremony, or for more detail, you can check the `circuits/README.md` file. Once that's done, go to the project's root directory and then run either `cargo run --bin ios` or `cargo run --bin android`. This command will build either an `xcframework` or a `jniLibs` folder containing libraries for the device and simulator. After this you can build in xcode/android studio without needing to run a cargo command again. Open the contents of `ios` or `android` to build the apps.
 
 To build a release binary use the following commands:
 
