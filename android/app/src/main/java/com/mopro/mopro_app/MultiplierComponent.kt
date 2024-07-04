@@ -96,4 +96,5 @@ fun MultiplierComponent(zkeyPath: String) {
         Text(text = verifyingTime, modifier = Modifier.padding(top = 600.dp).width(200.dp))
         Text(text = output, modifier = Modifier.padding(top = 650.dp).width(200.dp))
     }
+
 }
