@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -13,6 +14,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.ui.text.input.KeyboardType
 import uniffi.mopro.GenerateProofResult
 import uniffi.mopro.generateCircomProof
 import uniffi.mopro.verifyCircomProof
@@ -31,13 +34,31 @@ fun MultiplierComponent(zkeyPath: String) {
         )
     }
 
+    var a by remember { mutableStateOf("3") }
+    var b by remember { mutableStateOf("11") }
+
     val inputs = mutableMapOf<String, List<String>>()
-    inputs["a"] = listOf("3")
-    inputs["b"] = listOf("11")
 
     Box(modifier = Modifier.fillMaxSize().padding(16.dp), contentAlignment = Alignment.Center) {
+        TextField(
+            value = a,
+            onValueChange = { a = it },
+            label = { Text("Input a") },
+            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+            modifier = Modifier.padding(top = 10.dp)
+        )
+        TextField(
+            value = b,
+            onValueChange = { b = it },
+            label = { Text("Input b") },
+            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+            modifier = Modifier.padding(top = 150.dp)
+        )
         Button(
             onClick = {
+                inputs["a"] = listOf(a)
+                inputs["b"] = listOf(b)
+
                 Thread(
                     Runnable {
                         val startTime = System.currentTimeMillis()
@@ -51,7 +72,7 @@ fun MultiplierComponent(zkeyPath: String) {
                 )
                     .start()
             },
-            modifier = Modifier.padding(top = 20.dp)
+            modifier = Modifier.padding(top = 275.dp)
         ) { Text(text = "generate proof") }
         Button(
             onClick = {
@@ -61,18 +82,18 @@ fun MultiplierComponent(zkeyPath: String) {
                 verifyingTime = "verifying time: " + (endTime - startTime).toString() + " ms"
                 output = "output: " + uniffi.mopro.toEthereumInputs(res.inputs)
             },
-            modifier = Modifier.padding(top = 120.dp)
+            modifier = Modifier.padding(top = 375.dp)
         ) { Text(text = "verify proof") }
         Text(
             text = "Multiplier proof",
-            modifier = Modifier.padding(bottom = 180.dp),
+            modifier = Modifier.padding(bottom = 400.dp),
             fontWeight = FontWeight.Bold
         )
 
-        Text(text = initTime, modifier = Modifier.padding(top = 200.dp).width(200.dp))
-        Text(text = provingTime, modifier = Modifier.padding(top = 250.dp).width(200.dp))
-        Text(text = valid, modifier = Modifier.padding(top = 300.dp).width(200.dp))
-        Text(text = verifyingTime, modifier = Modifier.padding(top = 350.dp).width(200.dp))
-        Text(text = output, modifier = Modifier.padding(top = 400.dp).width(200.dp))
+        Text(text = initTime, modifier = Modifier.padding(top = 450.dp).width(200.dp))
+        Text(text = provingTime, modifier = Modifier.padding(top = 500.dp).width(200.dp))
+        Text(text = valid, modifier = Modifier.padding(top = 550.dp).width(200.dp))
+        Text(text = verifyingTime, modifier = Modifier.padding(top = 600.dp).width(200.dp))
+        Text(text = output, modifier = Modifier.padding(top = 650.dp).width(200.dp))
     }
 }
