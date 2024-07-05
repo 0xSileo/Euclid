@@ -1,6 +1,5 @@
 package com.mopro.mopro_app
 
-import MultiplierComponent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,6 +18,8 @@ import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 
+import EUVerifierComponent
+
 @Throws(IOException::class)
 private fun copyFile(`in`: InputStream, out: OutputStream) {
     val buffer = ByteArray(1024)
@@ -35,11 +36,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             MoproappTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    val s = assets.open("multiplier_0001.zkey")
-                    val f = File(filesDir, "multiplier_0001.zkey")
+                    val s = assets.open("eu-verifier_0001.zkey")
+                    val f = File(filesDir, "eu-verifier_0001.zkey")
                     copyFile(s, f.outputStream())
                     Column(modifier = Modifier.fillMaxSize().padding(paddingValues = innerPadding)) {
-                        MultiplierComponent(f.absolutePath)
+                        EUVerifierComponent(f.absolutePath)
                     }
                 }
             }
