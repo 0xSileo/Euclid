@@ -1,3 +1,13 @@
+import groovy.lang.Closure
+
+apply(plugin = "com.android.application")
+apply(plugin = "com.facebook.react")
+
+// See: https://stackoverflow.com/a/64368918
+apply(from = File("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"))
+val applyNativeModules: Closure<Project> = extra.get("applyNativeModulesSettingsGradle") as Closure<Project>
+applyNativeModules(project)
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -50,6 +60,8 @@ android {
 }
 
 dependencies {
+    implementation("com.facebook.react:react-android")
+    implementation("com.facebook.react:hermes-android")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

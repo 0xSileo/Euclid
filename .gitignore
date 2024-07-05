@@ -7,3 +7,5 @@ build/
 jniLibs/
 MoproAndroidBindings/
 MoproiOSBindings/
+
+node_modules
