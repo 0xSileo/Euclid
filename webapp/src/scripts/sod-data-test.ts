@@ -1,8 +1,8 @@
 import path from "path";
-// @ts-ignore
+// @ts-expect-error circom_tester doesn't ship with type declarations.
 import circom_tester from "circom_tester/wasm/tester";
 
-import { getCircuitInputs } from "../utils";
+import { getCircuitInputs } from "../utils.ts";
 
 // TODO: Replace with the base64 encoded SOD Data.
 const SOD_DATA = "Base64EncodedSODData";

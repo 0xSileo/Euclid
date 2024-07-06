@@ -61,6 +61,7 @@ const getSignatureData = async (
 ): Promise<{
   signature: Uint8Array;
   signedData: ArrayBuffer;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   publicKey: any; // CryptoKey
   eContentInfoBytes: Uint8Array;
 }> => {
@@ -101,6 +102,7 @@ const getSignatureData = async (
 
 function getPublicKeyFromSignedData(
   publicKeyInfo: PublicKeyInfo
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<any /* CryptoKey */> {
   const publicKeyInfoBuffer = publicKeyInfo.toSchema().toBER(false);
 
