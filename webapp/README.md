@@ -7,5 +7,4 @@ The webapp receives the base64 encoded SOD data and translates it into a format 
 ## Setup
 
 1. `npm install`
-2. Make sure that the [`eu-verifier` circuit](../circuits/eu-verifier) was compiled (see the README.md file in the [circuits](../circuits) directory).
-3. `npm run dev`
+2. `npm run dev`
