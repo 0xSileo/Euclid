@@ -1,7 +1,5 @@
 // Code was adapted from https://github.com/anon-aadhaar/anon-eu.
 
-import { subtle } from "crypto";
-
 import {
   bufferToHex,
   Uint8ArrayToCharArray,
@@ -14,7 +12,9 @@ import pkijs, {
   PublicKeyInfo,
 } from "pkijs";
 
-export async function getCircuitInputs(sodDataBase64: string) {
+export async function getCircuitInputs(
+  sodDataBase64: string
+): Promise<CircuitInputs> {
   const { signature, signedData, publicKey } = await getSignatureData(
     sodDataBase64
   );
@@ -35,7 +35,7 @@ export async function getCircuitInputs(sodDataBase64: string) {
 
   const jwk = await crypto.subtle.exportKey("jwk", publicKey);
   const dsPublicKey = splitToWords(
-    BigInt("0x" + bufferToHex(Buffer.from(jwk.n as string, "base64url"))),
+    BigInt("0x" + bufferToHex(Buffer.from(jwk.n as string, "base64"))),
     BigInt(121),
     BigInt(34)
   );
@@ -106,7 +106,7 @@ function getPublicKeyFromSignedData(
 ): Promise<any /* CryptoKey */> {
   const publicKeyInfoBuffer = publicKeyInfo.toSchema().toBER(false);
 
-  return subtle.importKey(
+  return crypto.subtle.importKey(
     "spki",
     publicKeyInfoBuffer,
     { name: "RSASSA-PKCS1-v1_5", hash: { name: "SHA-256" } },
@@ -131,3 +131,10 @@ function splitToWords(number: bigint, wordsize: bigint, numberElement: bigint) {
   }
   return words;
 }
+
+export type CircuitInputs = {
+  SODSignedDataPadded: string[];
+  SODSignedDataPaddedLength: number;
+  SODSignature: string[];
+  dsPublicKey: string[];
+};
