@@ -87,7 +87,7 @@ extension ContentView {
             
             let start = CFAbsoluteTimeGetCurrent()
             
-            let zkeyPath = Bundle.main.path(forResource: "multiplier_0001", ofType: "zkey")!
+            let zkeyPath = Bundle.main.path(forResource: "eu-verifier_0001", ofType: "zkey")!
             // Generate Proof
             let generateProofResult = try generateCircomProof(zkeyPath: zkeyPath, circuitInputs: inputs)
             assert(!generateProofResult.proof.isEmpty, "Proof should not be empty")
@@ -119,7 +119,7 @@ extension ContentView {
         do {
             let start = CFAbsoluteTimeGetCurrent()
             
-            let zkeyPath = Bundle.main.path(forResource: "multiplier_0001", ofType: "zkey")!
+            let zkeyPath = Bundle.main.path(forResource: "eu-verifier_0001", ofType: "zkey")!
             let isValid = try verifyCircomProof(zkeyPath: zkeyPath, proof: proof, publicInput: inputs)
             let end = CFAbsoluteTimeGetCurrent()
             let timeTaken = end - start

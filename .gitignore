@@ -7,3 +7,5 @@ build/
 jniLibs/
 MoproAndroidBindings/
 MoproiOSBindings/
+android/app/src/main/assets/eu-verifier_0001.zkey
+.idea/

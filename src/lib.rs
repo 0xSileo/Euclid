@@ -6,7 +6,7 @@ app!();
 
 fn zkey_witness_map(name: &str) -> Result<WtnsFn, MoproError> {
     match name {
-        "multiplier_0001.zkey" => Ok(circuit_witness),
+        "eu-verifier_0001.zkey" => Ok(circuit_witness),
         _ => Err(MoproError::CircomError("Unknown circuit name".to_string())),
     }
 }

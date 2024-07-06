@@ -3,3 +3,9 @@ circom
 **_cpp
 **_js
 **/circuit.wasm
+**/*.ptau
+**/*.zkey
+**/*.r1cs
+**/*.wtns
+**/input.json
+**/verification_key.json
