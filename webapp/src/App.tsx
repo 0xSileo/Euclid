@@ -29,7 +29,7 @@ function App() {
         <label htmlFor="sod-data">SOD Data</label>
         <input
           id="sod-data"
-          type="text"
+          type="password"
           placeholder="SOD Data (in Base64)"
           value={sodData}
           onChange={(e) => setSodData(e.target.value)}
