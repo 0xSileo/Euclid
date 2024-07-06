@@ -39,4 +39,4 @@ template EUVerifier(sod_n, sod_k, sodMaxDataLength) {
     sodRsa.signature <== SODSignature;
 }
 
-component main { public [dsPublicKey] } = EUVerifier(121, 17, 512);
+component main { public [dsPublicKey] } = EUVerifier(121, 34, 512);
