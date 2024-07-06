@@ -1,43 +1,48 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 
 import "./App.css";
-import { CircuitInputs, getCircuitInputs } from "./utils";
+import { getCircuitInputs } from "./utils";
 
 function App() {
-  const [inputs, setInputs] = useState<CircuitInputs>();
-  const [sodData, setSodData] = useState<string | undefined>();
-
-  useEffect(() => {
-    if (sodData) {
-      (async () => {})();
-    }
-  }, [sodData]);
+  const [sodData, setSodData] = useState<string>("");
+  const [inputJSON, setInputJSON] = useState<string>();
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
     if (!sodData) {
-      throw new Error("SOD Data is empty");
+      const error = new Error("SOD Data is empty");
+      console.error(error);
+      alert(error.message);
+      return;
     }
 
-    const inputs = await getCircuitInputs(sodData);
-    setInputs(inputs);
+    const input = await getCircuitInputs(sodData);
+    setInputJSON(JSON.stringify(input, null, 2));
   }
 
   return (
     <div>
-      <>{sodData && <p>{sodData}</p>}</>
-      <>{inputs && <p>{JSON.stringify(inputs, null, 2)}</p>}</>
-
+      <h1>Circuit Inputs Generator</h1>
+      <hr />
       <form onSubmit={handleSubmit}>
+        <label htmlFor="sod-data">SOD Data</label>
         <input
+          id="sod-data"
           type="text"
           placeholder="SOD Data (in Base64)"
           value={sodData}
           onChange={(e) => setSodData(e.target.value)}
         />
-        <button type="submit">Generate Circuit Inputs</button>
+        <button type="submit">Get Circuit Inputs</button>
       </form>
+      <hr />
+      <textarea
+        rows={15}
+        placeholder="The Circuit's inputs (encoded as JSON) will be displayed here."
+        value={inputJSON}
+        readOnly
+      ></textarea>
     </div>
   );
 }
