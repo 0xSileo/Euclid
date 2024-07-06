@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 
+import "./App.css";
 import { CircuitInputs, getCircuitInputs } from "./utils";
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
   }
 
   return (
-    <>
+    <div>
       <>{sodData && <p>{sodData}</p>}</>
       <>{inputs && <p>{JSON.stringify(inputs, null, 2)}</p>}</>
 
@@ -37,7 +38,7 @@ function App() {
         />
         <button type="submit">Generate Circuit Inputs</button>
       </form>
-    </>
+    </div>
   );
 }
 
