@@ -25,7 +25,7 @@ export async function getCircuitInputs(
   );
 
   const SODSignedDataPadded = Uint8ArrayToCharArray(SODDataPadded);
-  const SODSignedDataPaddedLength = SODDataPaddedLen;
+  const SODSignedDataPaddedLength = String(SODDataPaddedLen);
 
   const SODSignature = splitToWords(
     BigInt("0x" + bufferToHex(Buffer.from(signature)).toString()),
@@ -134,7 +134,7 @@ function splitToWords(number: bigint, wordsize: bigint, numberElement: bigint) {
 
 export type CircuitInputs = {
   SODSignedDataPadded: string[];
-  SODSignedDataPaddedLength: number;
+  SODSignedDataPaddedLength: string;
   SODSignature: string[];
   dsPublicKey: string[];
 };
