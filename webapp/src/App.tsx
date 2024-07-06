@@ -5,7 +5,6 @@ import { getCircuitInputs } from "./utils";
 
 function App() {
   const [sodData, setSodData] = useState<string>("");
-  const [inputJSON, setInputJSON] = useState<string>();
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -18,7 +17,7 @@ function App() {
     }
 
     const input = await getCircuitInputs(sodData);
-    setInputJSON(JSON.stringify(input, null, 2));
+    navigator.clipboard.writeText(JSON.stringify(input));
   }
 
   return (
@@ -36,13 +35,6 @@ function App() {
         />
         <button type="submit">Get Circuit Inputs</button>
       </form>
-      <hr />
-      <textarea
-        rows={15}
-        placeholder="The Circuit's inputs (encoded as JSON) will be displayed here."
-        value={inputJSON}
-        readOnly
-      ></textarea>
     </div>
   );
 }
