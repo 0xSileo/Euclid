@@ -7,7 +7,7 @@
 ```sh
 # Download Powers of Tau file
 #   See: https://github.com/iden3/snarkjs?tab=readme-ov-file#7-prepare-phase-2
-curl -O https://storage.googleapis.com/zkevm/ptau/powersOfTau28_hez_final_19.ptau
+curl -O https://storage.googleapis.com/zkevm/ptau/powersOfTau28_hez_final_21.ptau
 
 # ... OR ...
 
@@ -34,8 +34,11 @@ circom eu-verifier.circom --r1cs --wasm -l ../node_modules
 cp eu-verifier_js/eu-verifier.wasm ./circuit.wasm
 
 # Powers of Tau (has to be done once per circuit)
-npx snarkjs powersoftau prepare phase2 ../powersOfTau28_hez_final_19.ptau pot_final.ptau -v
-npx snarkjs groth16 setup eu-verifier.r1cs pot_final.ptau eu-verifier_0000.zkey
+npx snarkjs powersoftau prepare phase2 ../powersOfTau28_hez_final_21.ptau pot_final.ptau -v # Use this command followed by ...
+npx snarkjs groth16 setup eu-verifier.r1cs pot_final.ptau eu-verifier_0000.zkey # ... this command for a more secure setup.
+# ...OR...
+npx snarkjs groth16 setup eu-verifier.r1cs ../powersOfTau28_hez_final_21.ptau eu-verifier_0000.zkey # Faster. Good for testing.
+
 npx snarkjs zkey contribute eu-verifier_0000.zkey eu-verifier_0001.zkey --name="1st Contributor Name" -v
 npx snarkjs zkey export verificationkey eu-verifier_0001.zkey verification_key.json
 
