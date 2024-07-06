@@ -1,13 +1,25 @@
-import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+import { useEffect, useState } from "react";
 import "./App.css";
+
+const SOD_BASE64_QUERY_PARAM_KEY = "sod-base64";
 
 function App() {
   const [count, setCount] = useState(0);
+  const [sodData, setSodData] = useState<string>("");
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const result = urlParams.get(SOD_BASE64_QUERY_PARAM_KEY);
+    if (result) {
+      setSodData(result);
+    }
+  }, []);
 
   return (
     <>
+      <>{sodData && <p>{sodData}</p>}</>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
