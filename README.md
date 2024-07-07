@@ -2,6 +2,8 @@
 
 Zk-snarkification of EU ID data. The goal is for European citizens holding a new EU ID card to anonymously prove part of their identity through selective disclosure and zero-knowledge proofs. For that, there are a few parts that need to be implemented. In this repository, we'll provide the code for the _proving_ part of the process. The verification can be done in different programming languages or environments.
 
+The presentation slides can be found [here](./euclid-zk-proofs-for-eu-id-cards.pdf)
+
 ## Inner workings
 
 ### 1. Retrieval of MRZ and SOD
