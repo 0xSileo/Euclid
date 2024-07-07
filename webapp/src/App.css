@@ -1,0 +1,30 @@
+body {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
+
+div {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
+div input {
+  width: 100%;
+  margin: auto;
+  display: block;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+hr {
+  margin: 25px 0;
+}
