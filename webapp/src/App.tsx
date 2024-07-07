@@ -100,7 +100,7 @@ function App() {
 
   return (
     <div>
-      <h1>Circuit Inputs Generator</h1>
+      <h1>zk-Proofs for European ID Cards</h1>
       <hr />
       {copiedToClipboard && <p>Circuit input copied to clipboard</p>}
       <form onSubmit={handleSubmit}>
