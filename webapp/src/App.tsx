@@ -5,6 +5,7 @@ import { getCircuitInputs } from "./utils";
 
 function App() {
   const [sodData, setSodData] = useState<string>("");
+  const [copiedToClipboard, setCopiedToClipboard] = useState<boolean>(false);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -18,12 +19,14 @@ function App() {
 
     const input = await getCircuitInputs(sodData);
     navigator.clipboard.writeText(JSON.stringify(input));
+    setCopiedToClipboard(true);
   }
 
   return (
     <div>
       <h1>Circuit Inputs Generator</h1>
       <hr />
+      {copiedToClipboard && <p>Circuit input copied to clipboard</p>}
       <form onSubmit={handleSubmit}>
         <label htmlFor="sod-data">SOD Data</label>
         <input
