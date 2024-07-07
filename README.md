@@ -12,7 +12,7 @@ Plenty of data is stored on the chips of modern cards. There is the machine-read
 
 ![Machine-readable zone of a US passport](https://upload.wikimedia.org/wikipedia/commons/7/7e/Mrp_image.gif)
 
-One of the easiest (wrt UX) ways to retrieve it is by making use of the card's NFC antenna, which can be read by most smartphones.
+One of the easiest (wrt UX) ways to retrieve it is by making use of the card's NFC antenna, which can be read by most smartphones. We adapted an android app to fit our requirements (mostly removed PII decoding and just copying SOD data to clipboard for now) and the code can be found in the [Euclid-scanning](https://github.com/0xSileo/Euclid-scanning) repository.
 
 ### Proof generation
 
