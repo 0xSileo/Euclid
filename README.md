@@ -2,7 +2,7 @@
 
 Zk-snarkification of EU ID data. The goal is for European citizens holding a new EU ID card to anonymously prove part of their identity through selective disclosure and zero-knowledge proofs. For that, there are a few parts that need to be implemented. In this repository, we'll provide the code for the _proving_ part of the process. The verification can be done in different programming languages or environments.
 
-The presentation slides can be found [here](./euclid-zk-proofs-for-eu-id-cards.pdf)
+This project started at the [PSE](https://pse.dev) EthCC[7] hacker house, and the presentation slides can be found [here](./euclid-zk-proofs-for-eu-id-cards.pdf).
 
 ## Inner workings
 
@@ -39,3 +39,4 @@ CONFIGURATION=release cargo run --bin android
 ## Running the Webapp
 
 As an alternative to the native mobile proving we also created a webapp that allows for proof generation and verification via `snarkjs`. You can follow the steps in the [`webapp/README.md`](/webapp/README.md) file to spin up a local version.
+
