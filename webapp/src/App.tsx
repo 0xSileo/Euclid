@@ -3,9 +3,12 @@ import { FormEvent, useState } from "react";
 import "./App.css";
 import { getCircuitInputs } from "./utils";
 
-const WASM_URL = "/Euclid/circuit.wasm";
-const ZKEY_URL = "/Euclid/eu-verifier_0001.zkey";
-const VKEY_URL = "/Euclid/verification_key.json";
+const WASM_URL =
+  "https://ipfs.io/ipfs/QmWbP4eBja76m7L3w5JH9v6vGp8wGepf8vRNJNvY8RWnvc";
+const ZKEY_URL =
+  "https://ipfs.io/ipfs/QmYdSnjcEcJ1K3vnQnjrwRmau6tmTTzTJAzsgsAqfvWvyH";
+const VKEY_URL =
+  "https://ipfs.io/ipfs/QmaLMMTvUPhmxnxbKmoTSqpRNrsWYdNUNEaQe7Yv1jP3qB";
 
 function App() {
   const [proof, setProof] = useState();
